@@ -23,7 +23,7 @@ const Todo = () => {
       {/* eidt */}
       <CiEdit className='  text-2xl' />
       {/* delete */}
-      <ImCross className=' text-red-500 w-4 h-4' />
+      <ImCross className=' text-red-500  text-lg' />
     </div>
   );
 };
