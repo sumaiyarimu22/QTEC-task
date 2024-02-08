@@ -31,13 +31,10 @@ export const colorSelected = (todoId, color) => {
   };
 };
 
-export const edited = (todoText, todoId) => {
+export const edited = (todoinfo) => {
   return {
     type: DELETED,
-    payload: {
-      todoText,
-      todoId,
-    },
+    payload: todoinfo,
   };
 };
 export const deleted = (todoId) => {
