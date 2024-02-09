@@ -2,7 +2,7 @@
 import { COLORCHANGED, PRIORITYCHANGED } from "./actionTypes";
 
 const initialState = {
-  priority: "LOW",
+  priority: "low",
   colors: [],
 };
 

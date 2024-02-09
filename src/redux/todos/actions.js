@@ -4,6 +4,7 @@ import {
   CLEARCOMPLETED,
   COLORSELECTED,
   DELETED,
+  EDITED,
   TOGGLED,
 } from "./actionTypes";
 
@@ -31,12 +32,16 @@ export const colorSelected = (todoId, color) => {
   };
 };
 
-export const edited = (todoinfo) => {
+export const edited = (id, newText) => {
   return {
-    type: DELETED,
-    payload: todoinfo,
+    type: EDITED,
+    payload: {
+      id,
+      newText,
+    },
   };
 };
+
 export const deleted = (todoId) => {
   return {
     type: DELETED,
