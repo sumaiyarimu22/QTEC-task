@@ -9,7 +9,7 @@ import {
   TOGGLED,
 } from "./actionTypes";
 
-const initialState = [
+const initialState = JSON.parse(localStorage.getItem("todos")) || [
   {
     id: 1,
     text: "Learn React JS",
@@ -29,9 +29,11 @@ const nextTodoId = (todos) => {
 };
 
 const reducer = (state = initialState, action) => {
+  let newState;
+
   switch (action.type) {
     case ADDED:
-      return [
+      newState = [
         ...state,
         {
           id: nextTodoId(state),
@@ -39,22 +41,25 @@ const reducer = (state = initialState, action) => {
           completed: false,
         },
       ];
+      localStorage.setItem("todos", JSON.stringify(newState));
+      return newState;
 
     case TOGGLED:
-      return state.map((todo) => {
+      newState = state.map((todo) => {
         if (todo.id !== action.payload) {
           return todo;
         }
-
         return {
           ...todo,
           completed: !todo.completed,
         };
       });
+      localStorage.setItem("todos", JSON.stringify(newState));
+      return newState;
 
     case COLORSELECTED:
       const { todoId, color } = action.payload;
-      return state.map((todo) => {
+      newState = state.map((todo) => {
         if (todo.id !== todoId) {
           return todo;
         }
@@ -63,10 +68,12 @@ const reducer = (state = initialState, action) => {
           color: color,
         };
       });
+      localStorage.setItem("todos", JSON.stringify(newState));
+      return newState;
 
     case EDITED:
       const { id, newText } = action.payload;
-      return state.map((todo) => {
+      newState = state.map((todo) => {
         if (todo.id !== id) {
           return todo;
         }
@@ -75,20 +82,28 @@ const reducer = (state = initialState, action) => {
           text: newText,
         };
       });
+      localStorage.setItem("todos", JSON.stringify(newState));
+      return newState;
 
     case DELETED:
-      return state.filter((todo) => todo.id !== action.payload);
+      newState = state.filter((todo) => todo.id !== action.payload);
+      localStorage.setItem("todos", JSON.stringify(newState));
+      return newState;
 
     case ALLCOMPLETED:
-      return state.map((todo) => {
+      newState = state.map((todo) => {
         return {
           ...todo,
           completed: true,
         };
       });
+      localStorage.setItem("todos", JSON.stringify(newState));
+      return newState;
 
     case CLEARCOMPLETED:
-      return state.filter((todo) => !todo.completed);
+      newState = state.filter((todo) => !todo.completed);
+      localStorage.setItem("todos", JSON.stringify(newState));
+      return newState;
 
     default:
       return state;

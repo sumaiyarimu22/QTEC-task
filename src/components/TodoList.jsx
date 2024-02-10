@@ -10,9 +10,9 @@ const TodoList = () => {
 
     switch (priority) {
       case "medium":
-        return !todo.completed; // Filter out completed todos for medium priority
+        return !todo.completed;
       case "high":
-        return todo.completed; // Filter out incomplete todos for high priority
+        return todo.completed;
       default:
         return true;
     }

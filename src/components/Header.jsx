@@ -25,23 +25,25 @@ const Header = () => {
 
   return (
     <div>
+      {/* task add input form */}
       <form
         onSubmit={handleSubmit}
-        className='flex items-center bg-gray-50 px-4 py-4 rounded-md'
+        className='flex items-center bg-purple-50 px-4 py-4 rounded-md'
       >
         <input
           value={todoText}
           onChange={(e) => setTodoText(e.target.value)}
           type='text'
           placeholder='Type your todo'
-          className='w-full text-lg px-4 py-1 border-none outline-none bg-gray-50 text-gray-500'
+          className='w-full text-lg px-4 py-1 border-none outline-none bg-purple-50 '
         />
         <button type='submit' className='w-8 text-gray-700 h-8 text-3xl'>
           <MdAdd />
         </button>
       </form>
 
-      <ul className='flex justify-between my-4 text-xs text-gray-500'>
+      {/* compelete all and cleare all task */}
+      <ul className='flex justify-between my-4 text-xs '>
         <li
           onClick={handleAllCompelete}
           className='flex space-x-1 cursor-pointer'

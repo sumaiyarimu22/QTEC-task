@@ -39,9 +39,10 @@ const Todo = ({ todo }) => {
   };
 
   return (
-    <div className='flex justify-start items-center p-2 hover:bg-gray-50 hover:transition-all space-x-4 border-b border-gray-400/20 last:border-0'>
+    <div className='flex justify-start items-center p-2 hover:bg-purple-50 hover:transition-all space-x-4 border-b border-gray-400/20 last:border-0'>
+      {/* compelete or incompelete input */}
       <div
-        className={`rounded-full bg-white border-2  w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2 ${
+        className={`rounded-full  bg-white border-2  w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2 ${
           completed && "border-green-500 focus-within:border-green-500"
         }`}
       >
@@ -49,7 +50,7 @@ const Todo = ({ todo }) => {
           type='checkbox'
           checked={completed}
           onChange={() => handleStatusToggle(id)}
-          className='opacity-0 absolute rounded-full'
+          className='opacity-0  cursor-pointer absolute rounded-full'
         />
         {completed && (
           <MdDone className=' text-lg text-green-500 pointer-events-none' />
@@ -94,17 +95,20 @@ const Todo = ({ todo }) => {
 
       {/* Render edit button if not in editing mode, otherwise render save button */}
       {isEditing ? (
-        <div onClick={handleSaveEdit} className='text-2xl'>
+        <div onClick={handleSaveEdit} className='text-2xl  cursor-pointer'>
           <MdDone />
         </div>
       ) : (
-        <div onClick={handleEdit} className='text-2xl'>
+        <div onClick={handleEdit} className='text-2xl  cursor-pointer'>
           <CiEdit />
         </div>
       )}
 
       {/* Delete button */}
-      <div onClick={handlerDelete} className='text-red-500 text-lg'>
+      <div
+        onClick={handlerDelete}
+        className='text-red-500 text-lg  cursor-pointer'
+      >
         <ImCross />
       </div>
     </div>
